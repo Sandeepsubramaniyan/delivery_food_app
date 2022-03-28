@@ -1,25 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
 
+const data = [
+  { resturant: "Palmshore", 
+    cuisine: "italian",  
+    location: "avadi"},
+
+]
+  
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <table>
+        <tr>
+          <th>Resturant</th>
+          <th>Cuisine</th>
+          <th>Location</th>
+        </tr>
+        {data.map((val, key) => {
+          return (
+            <tr key={key}>
+              <td>{val.resturant}</td>
+              <td>{val.cuisine}</td>
+              <td>{val.location}</td>
+            </tr>
+          )
+        })}
+      </table>
     </div>
   );
 }
-
+  
 export default App;
+
+
