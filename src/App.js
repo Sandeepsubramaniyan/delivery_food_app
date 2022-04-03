@@ -21,7 +21,7 @@ let restaurants = [
     Hotel: "The Creams",
     cuisine:"Bakery",
     location: "Ambattur",
-    description:"Bread made fresh"
+    description:"Breads made fresh",
   },
 ];
 
