@@ -1,5 +1,5 @@
 import { NavLink, Outlet} from "react-router-dom"
-import {getRestaurants} from "../resource";
+import {getRestaurants} from "../App";
 
 function Restaurants() {
   let restaurants = getRestaurants();
@@ -14,10 +14,10 @@ function Restaurants() {
       {restaurants.map((restaurant) => (
         <NavLink 
           style={{ display: "block", margin: "1rem 0" }}
-          to={`/restaurants/${restaurant.number}`}
-          key = {restaurant.number}
+          to={`/restaurants/${restaurant.id}`}
+          key = {restaurant.id}
          >
-          {restaurant.name}
+          {restaurant.Hotel}           
          </NavLink>
       ))}
     </nav>

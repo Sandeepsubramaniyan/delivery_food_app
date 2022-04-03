@@ -17,7 +17,15 @@ render(
     <Routes>
       <Route exact path ="/" element={<App />} >
       <Route path ="/Restaurants" element={<Restaurants />}>
-        <Route path=":restuarantId" element={<Restaurant />} />
+        <Route
+          index
+          element={
+            <main style={{ padding: "1rem" }}>
+              <p>Select an restaurant</p>
+            </main>
+          }
+        />
+        <Route path=":restaurantId" element={<Restaurant />} />
       </Route>
       <Route
         path="*"
