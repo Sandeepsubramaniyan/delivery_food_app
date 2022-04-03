@@ -11,7 +11,7 @@ let restaurants = [
   },
   {
     id :2,
-    Hotel:"shell",
+    Hotel:"Seashell",
     cuisine:"Chinese",
     location: "AnnaNagar",
     description: "Taste the real Chinese"
