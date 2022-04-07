@@ -29,7 +29,7 @@ let restaurants = [
 function App() {
   return (
     <div className="App">
-      <h1>Zomato</h1>
+      <h1>Zoggy</h1>
       <nav
         style = {{
           borderBottom: "solid 1px",
