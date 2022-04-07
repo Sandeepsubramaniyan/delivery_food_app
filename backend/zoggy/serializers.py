@@ -1,11 +1,11 @@
-from unittest.util import _MAX_LENGTH
+from .models import Zoggy
 from rest_framework import serializers
 
 
-class ZoggySerializer(serializers.Serializer):
+class ZoggySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Zoggy
+        fields = "__all__"
     
-    id= serializers.IntegerField
-    hotel= serializers.CharField(max_length=50)
-    cuisine= serializers.CharField(max_length=100)
-    location=serializers.CharField(max_length=100)
+    
     
