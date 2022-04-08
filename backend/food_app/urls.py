@@ -13,11 +13,13 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from sys import api_version
+from rest_framework.urlpatterns import format_suffix_patterns
+from django.urls import path
+from zoggy import views
 from django.contrib import admin
-from django.conf.urls import url,include
 
+urlpatterns = [path('admin/',admin.site.urls),
+               path('queryset/',views.ZoggyViewSet.as_view())] 
 
-urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    
-]
+urlpatterns= format_suffix_patterns(urlpatterns)
