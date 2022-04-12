@@ -1,6 +1,6 @@
-import  {Component} from 'react';
+import React, {Component} from 'react';
+import {Link , Outlet } from "react-router-dom";
 import './App.css';
-
 import axios from 'axios';
 
 let restaurants = [
@@ -32,14 +32,14 @@ class App extends Component {
     super(props);
     this.refreshList= this.refreshList.bind()
     this.state={
-      displayItems:[],
-      activeItem:{
-        hotel:"",
-        cuisine:"",
-        location:"",
-        description:""
+      display:[],
+      // activeItem:{
+      //   hotel:"",
+      //   cuisine:"",
+      //   location:"",
+      //   description:""
 
-      },
+      // },
     };
   }
 
@@ -49,14 +49,32 @@ class App extends Component {
 
   refreshList = () => {
     axios
-        .get("/display/zoggys")
+        .get("/display/")
         .then((res) => {
             console.log("response", res)
-            this.setState({ displayItems: res.data })
+            this.setState({ display: res.data })
         })
         .catch((err) => {
           console.log(err)
         });
+  }
+
+
+  render(){
+    return (
+            <div className="App">
+            <h1>Zoggy</h1>
+            <nav
+              style={{
+                borderBottom: "solid 1px",
+                paddingBottom: "1rem",
+              }}
+            >
+              <Link to="/restaurants"><h3> HotelList</h3> </Link>
+            </nav>
+            <Outlet />
+          </div>
+        );
   }
 }
 
