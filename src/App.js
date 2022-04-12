@@ -1,6 +1,6 @@
-import { Outlet, Link } from "react-router-dom";
+import  {Component} from 'react';
 import './App.css';
-import React,{Component} from 'react';
+
 import axios from 'axios';
 
 let restaurants = [
