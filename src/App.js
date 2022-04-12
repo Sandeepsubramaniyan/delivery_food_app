@@ -1,5 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import './App.css';
+import React,{Component} from 'react';
+import axios from 'axios';
 
 let restaurants = [
   {
@@ -25,38 +27,72 @@ let restaurants = [
   },
 ];
 
-  
-function App() {
-  return (
-    <div className="App">
-      <h1>Zoggy</h1>
-      <nav
-        style = {{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >        
-      </nav>
-      <table>
-        <tr>
-          <th>Hotel</th>
-          <th>cuisine</th>
-          <th>location</th>
-        </tr>
-        {restaurants.map((val, key) => {
-          return (
-            <tr key={key}>
-              <td><Link to = "/restaurants">{val.Hotel}</Link></td>
-              <td>{val.cuisine}</td>
-              <td>{val.location}</td>
-            </tr>
-          )
-        })}
-      </table>
-      <Outlet />
-    </div>
-  );
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.refreshList= this.refreshList.bind()
+    this.state={
+      displayItems:[],
+      activeItem:{
+        hotel:"",
+        cuisine:"",
+        location:"",
+        description:""
+
+      },
+    };
+  }
+
+  componentDidMount() {
+    this.refreshList();
+  }
+
+  refreshList = () => {
+    axios
+        .get("/display/zoggys")
+        .then((res) => {
+            console.log("response", res)
+            this.setState({ displayItems: res.data })
+        })
+        .catch((err) => {
+          console.log(err)
+        });
+  }
 }
+
+
+  
+// function App() {
+//   return (
+//     <div className="App">
+//       <h1>Zoggy</h1>
+//       <nav
+//         style = {{
+//           borderBottom: "solid 1px",
+//           paddingBottom: "1rem",
+//         }}
+//       >        
+//       </nav>
+//       <table>
+//         <tr>
+//           <th>Hotel</th>
+//           <th>cuisine</th>
+//           <th>location</th>
+//         </tr>
+//         {restaurants.map((val, key) => {
+//           return (
+//             <tr key={key}>
+//               <td><Link to = "/restaurants">{val.Hotel}</Link></td>
+//               <td>{val.cuisine}</td>
+//               <td>{val.location}</td>
+//             </tr>
+//           )
+//         })}
+//       </table>
+//       <Outlet />
+//     </div>
+//   );
+// }
 
 
 
