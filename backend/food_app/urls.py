@@ -20,6 +20,6 @@ from zoggy import views
 from django.contrib import admin
 
 urlpatterns = [path('admin/',admin.site.urls),
-               path('queryset/',views.ZoggyViewSet.as_view())] 
+               path('display/',views.ZoggyViewSet.as_view())] 
 
 urlpatterns= format_suffix_patterns(urlpatterns)

@@ -12,8 +12,8 @@ class ZoggyViewSet(APIView):
         def get(self,request):
 
                 
-            queryset = Zoggy.objects.all()
-            serializer_class = ZoggySerializer(queryset,many=True)
+            display = Zoggy.objects.all()
+            serializer_class = ZoggySerializer(display,many=True)
             return Response(serializer_class.data)
         
     
