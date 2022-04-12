@@ -1,3 +1,5 @@
+import React from 'react'
+import App from "./App";
 import {render} from "react-dom";
 import {
   BrowserRouter,
@@ -5,7 +7,6 @@ import {
   Route,
 }from "react-router-dom";
 import './index.css';
-import App from "./App";
 import Restaurants from "./pages/restaurants";
 import Restaurant from "./pages/restaurant";
 
