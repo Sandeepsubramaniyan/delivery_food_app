@@ -1,17 +1,35 @@
-
-from rest_framework.views import APIView
+from rest_framework.viewsets import ModelViewSet
 from .serializers import ZoggySerializer
 from .models import Zoggy
-from rest_framework.response import Response
+
 
 
 # Create your views here.
 
-class ZoggyViewSet(APIView):
-    def get(self,request):                
-        display = Zoggy.objects.all()
-        serializer_class = ZoggySerializer(display,many=True)
-        return Response(serializer_class.data)
+class ZoggyViewSet(ModelViewSet):
+        
+        serializer_class = ZoggySerializer            
+        queryset = Zoggy.objects.all()
+        
+        
+    
+    
+# class ZoggyIndividualViewSet(ModelViewSet):
+#     def get(self,request,id):
+#         display =Zoggy.objects.id()
+#         serializer_class = ZoggySerializer(display)
+#         return Response(serializer_class.data)
+        
+    
+    
+    # def post(self,request,id=None):
+        
+    #     try:
+    #         Hotels=Zoggy.objects.get(id_Hotel=id)
+    #     except Zoggy.DoesNotExist:
+    #         raise NotFound('No id found')
+        
+        
 
         
     

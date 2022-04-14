@@ -25,7 +25,7 @@ class App extends Component {
 
   refreshList = () => {
     axios
-        .get("/display/")
+        .get("/zoggy/displays/")
         .then((res) => {
             const data = res.data
             this.setState({ display: data })
@@ -48,6 +48,7 @@ class App extends Component {
       >        
       </nav>
       <table>
+        <thead>
         <tr>
           <th>Hotel</th>
           <th>Cuisine</th>
@@ -56,12 +57,13 @@ class App extends Component {
         {this.state.display.map((val, key) => {
           return (
             <tr key={key}>
-              <td><Link to ={`display/${val.id}`} key={val.id} > {val.hotel}</Link></td>            
+              <td><Link to ={`/displaying/${val.id}`} key={val.id} > {val.hotel}</Link></td>            
               <td>{val.cuisine}</td>
               <td>{val.location}</td>
             </tr>
           )
         })}
+        </thead>
       </table>
       <Outlet />
     </div>
