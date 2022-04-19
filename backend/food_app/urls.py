@@ -15,14 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include,re_path
-from zoggy import urls as zoggy_urls
-
+from zoggy import views
+from rest_framework.urlpatterns import format_suffix_patterns
 
 
 urlpatterns = [
-    re_path(r'^zoggy/',include(zoggy_urls)),
+    
     re_path(r'^admin/', admin.site.urls),
-    
-    
-    
+    re_path('displays/', views.ZoggyView.as_view()),
+    re_path('individual/<int:pk>/', views.IndividualView.as_view(), name="Details_unique")    
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)

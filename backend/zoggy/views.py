@@ -1,25 +1,31 @@
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.views import APIView
 from .serializers import ZoggySerializer
 from .models import Zoggy
+from rest_framework.response import Response
+from django.shortcuts import render, get_object_or_404
+from rest_framework.decorators import api_view
 
 
 
 # Create your views here.
 
-class ZoggyViewSet(ModelViewSet):
+class ZoggyView(APIView):
         
-        serializer_class = ZoggySerializer            
-        queryset = Zoggy.objects.all()
+        def get(self,request):
+                displays = Zoggy.objects.all()
+                serializer_class = ZoggySerializer(displays,many=True)            
+                return Response(serializer_class.data)
         
+          
         
-    
-    
-# class ZoggyIndividualViewSet(ModelViewSet):
-#     def get(self,request,id):
-#         display =Zoggy.objects.id()
-#         serializer_class = ZoggySerializer(display)
-#         return Response(serializer_class.data)
+class IndividualView(APIView):
         
+        def get(self, request, pk):
+                individual = get_object_or_404(Zoggy, pk=pk)
+                serializer = ZoggySerializer(individual)
+                return Response(serializer.individual)
+        
+                
     
     
     # def post(self,request,id=None):
