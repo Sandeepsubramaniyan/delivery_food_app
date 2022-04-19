@@ -8,3 +8,7 @@ class Zoggy(models.Model):
     cuisine= models.CharField(max_length=100)
     location= models.CharField(max_length=100)
     description= models.CharField(max_length=300)
+    
+    
+    def _str_(self):
+        return self.hotel

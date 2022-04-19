@@ -7,8 +7,8 @@ import {
   Route,
 }from "react-router-dom";
 import './index.css';
-import Restaurants from "./pages/restaurant1";
 import Restaurant from "./pages/restaurant";
+import Restaurant1 from "./pages/restaurant1";
 
 
 
@@ -17,18 +17,9 @@ render(
   <BrowserRouter>
     <Routes>
       <Route exact path ="/" element={<App />} >
-      <Route path ="/display2" element={<Restaurants />}>
-        <Route path =":restaurantId" element={<Restaurant />}>
+      <Route path ="/data" element={<Restaurant1 />}>
+        <Route path =":data2Id" element={<Restaurant />} />
       </Route>
-        <Route
-          index
-          element={
-            <main style={{ padding: "1rem" }}>
-              <p>Select an restaurant</p>
-            </main>
-          }
-        />
-        </Route>
       <Route
         path="*"
         element={

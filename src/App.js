@@ -1,7 +1,6 @@
-import React, {Component} from 'react';
 import './App.css';
-import {Link,Outlet } from "react-router-dom";
-import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
+import React, {Component} from 'react';
+import {Link, Outlet } from "react-router-dom";
 import axios from 'axios';
 
 class App extends Component {
@@ -26,10 +25,10 @@ class App extends Component {
 
   refreshList = () => {
     axios
-        .get("/displays/")
+        .get("/displays")
         .then((res) => {  
             console.log("response",res)
-            const data = res.data
+            const data = res.data;
             this.setState({ data: data })
         })
         .catch((err) => {
@@ -39,10 +38,10 @@ class App extends Component {
 
   detailsList = () => {
     axios
-      .get("/details/")
+      .get("/data")
       .then((res) => {
         console.log("response",res)
-        const display_id = res.data
+        const display_id = res.data;
         this.setState({data:display_id})
       })
       .catch((err) => {
@@ -95,7 +94,7 @@ return [];
 
 export function getRestaurant(id) {
 return [].find(
-  (display2) => display2.id === id
+  (data2) => data2.id === id
 );
 }
 

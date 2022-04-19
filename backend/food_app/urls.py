@@ -21,9 +21,9 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     
-    re_path(r'^admin/', admin.site.urls),
+    re_path('admin/', admin.site.urls),
     re_path('displays/', views.ZoggyView.as_view()),
-    re_path('individual/<int:pk>/', views.IndividualView.as_view(), name="Details_unique")    
+    re_path('data/<int:pk>/', views.Individual.as_view(), name="Details_unique")    
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
