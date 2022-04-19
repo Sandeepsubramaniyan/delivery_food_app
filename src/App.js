@@ -13,7 +13,7 @@ class App extends Component {
         hotel:"",
         cuisine:"",
         location:"",
-        description:""
+        description:"",
 
       },
     };

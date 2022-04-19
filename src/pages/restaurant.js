@@ -11,7 +11,7 @@ export default function Restaurant() {
 
   useEffect(
     async () => {
-      if (data2Id != null) {
+      if (data2Id != null){
         console.log("params",data2Id);
         const url = "/data/" + data2Id;
 

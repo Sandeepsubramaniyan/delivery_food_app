@@ -14,16 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include,re_path
+from django.urls import path
 from zoggy import views
 from rest_framework.urlpatterns import format_suffix_patterns
 
 
 urlpatterns = [
     
-    re_path('admin/', admin.site.urls),
-    re_path('displays/', views.ZoggyView.as_view()),
-    re_path('data/<int:pk>/', views.Individual.as_view(), name="Details_unique")    
+    path('admin/', admin.site.urls),
+    path('displays/', views.ZoggyView.as_view()),
+    path('data/<int:pk>/', views.Individual.as_view(), name="Details_list")    
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
