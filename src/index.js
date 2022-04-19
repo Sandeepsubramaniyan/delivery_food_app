@@ -7,7 +7,7 @@ import {
   Route,
 }from "react-router-dom";
 import './index.css';
-import Restaurants from "./pages/restaurants";
+import Restaurants from "./pages/restaurant1";
 import Restaurant from "./pages/restaurant";
 
 
@@ -17,7 +17,9 @@ render(
   <BrowserRouter>
     <Routes>
       <Route exact path ="/" element={<App />} >
-      <Route path ="/Restaurants" element={<Restaurants />}>
+      <Route path ="/display2" element={<Restaurants />}>
+        <Route path =":restaurantId" element={<Restaurant />}>
+      </Route>
         <Route
           index
           element={
@@ -26,8 +28,7 @@ render(
             </main>
           }
         />
-        <Route path=":restaurantId" element={<Restaurant />} />
-      </Route>
+        </Route>
       <Route
         path="*"
         element={

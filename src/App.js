@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {Link,Outlet } from "react-router-dom";
 import './App.css';
+import {Link,Outlet } from "react-router-dom";
+import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 import axios from 'axios';
 
 class App extends Component {
@@ -8,7 +9,7 @@ class App extends Component {
     super(props);
     this.refreshList= this.refreshList.bind()
     this.state={
-      display:[],
+      data:[],
       activeItem:{
         hotel:"",
         cuisine:"",
@@ -25,14 +26,28 @@ class App extends Component {
 
   refreshList = () => {
     axios
-        .get("/zoggy/displays/")
-        .then((res) => {
+        .get("/displays/")
+        .then((res) => {  
+            console.log("response",res)
             const data = res.data
-            this.setState({ display: data })
+            this.setState({ data: data })
         })
         .catch((err) => {
           console.log(err)
         });
+  }
+
+  detailsList = () => {
+    axios
+      .get("/details/")
+      .then((res) => {
+        console.log("response",res)
+        const display_id = res.data
+        this.setState({data:display_id})
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
 
@@ -54,10 +69,10 @@ class App extends Component {
           <th>Cuisine</th>
           <th>Location</th>
         </tr>
-        {this.state.display.map((val, key) => {
+        {this.state.data.map((val, key) => {
           return (
             <tr key={key}>
-              <td><Link to ={`/displaying/${val.id}`} key={val.id} > {val.hotel}</Link></td>            
+              <td><Link to ={`/data/${val.id}`} key={val.id} > {val.hotel}</Link></td>            
               <td>{val.cuisine}</td>
               <td>{val.location}</td>
             </tr>
@@ -73,14 +88,14 @@ class App extends Component {
 
 
 
-export function getRestaurants() {
+export function getRestaurant1() {
 return [];
 }
 
 
 export function getRestaurant(id) {
 return [].find(
-  (restaurant) => restaurant.id === id
+  (display2) => display2.id === id
 );
 }
 
