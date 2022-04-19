@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink, Outlet} from "react-router-dom"
 import {getRestaurant1} from "../App";
 
-function Restaurants() {
+function Restaurant1() {
   let data = getRestaurant1();
   return (
     <div style={{ display: "flex" }}>
