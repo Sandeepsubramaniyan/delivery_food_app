@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
-from .serializers import ZoggySerializer
-from .models import Zoggy
+from .serializers import FoodSerializer, ZoggySerializer
+from .models import Zoggy , Food
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
@@ -25,8 +25,14 @@ class Individual(APIView):
                 serializer = ZoggySerializer(data)
                 return Response(serializer.data)
         
+
+
                 
-    
+class FoodView(APIView):
+        
+        def get(self,request):
+                filter_cuisine = Food.objects.filter()
+                serializer_class = FoodSerializer
     
     # def post(self,request,id=None):
         
