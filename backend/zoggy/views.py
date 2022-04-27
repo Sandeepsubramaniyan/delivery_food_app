@@ -1,6 +1,6 @@
 from rest_framework.views import APIView
-from .serializers import FoodSerializer, ZoggySerializer
-from .models import Zoggy , Food
+from .serializers import CuisineSerializer, ZoggySerializer
+from .models import Zoggy , Cuisine
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
 
@@ -28,11 +28,16 @@ class Individual(APIView):
 
 
                 
-class FoodView(APIView):
+class CuisineView(APIView):
         
         def get(self,request):
-                filter_cuisine = Food.objects.filter()
-                serializer_class = FoodSerializer
+                filter_cuisine = Cuisine.objects.get(cuisines= 'chinese')
+                print("hotel many to many", filter_cuisine.hotel)
+                # hotel_list = filter_cuisine.values_list('hotel',flat=True)
+                # print(hotel_list)
+                hotels=Zoggy.objects.filter(id__in = [])
+                serializer_class = ZoggySerializer(hotels)
+                return Response(serializer_class.data)
     
     # def post(self,request,id=None):
         

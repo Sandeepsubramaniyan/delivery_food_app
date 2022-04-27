@@ -23,7 +23,8 @@ urlpatterns = [
     
     path('admin/', admin.site.urls),
     path('displays/', views.ZoggyView.as_view()),
-    path('data/<int:pk>/', views.Individual.as_view(), name="Details_list")    
+    path('data/<int:pk>/', views.Individual.as_view(), name="Details_list"),
+    path('hotels/',views.CuisineView.as_view(),name="hotel_list")
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

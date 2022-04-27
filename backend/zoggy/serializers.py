@@ -1,4 +1,4 @@
-from .models import Food, Zoggy
+from .models import Cuisine, Zoggy
 from rest_framework import serializers
 
 
@@ -8,8 +8,8 @@ class ZoggySerializer(serializers.ModelSerializer):
         fields = "__all__"
     
     
-class FoodSerializer(serializers.ModelSerializer):
+class CuisineSerializer(serializers.ModelSerializer):
     
     class Meta:
-        model= Food
+        model= Cuisine
         fields = "__all__"    
