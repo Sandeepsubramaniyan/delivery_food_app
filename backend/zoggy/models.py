@@ -12,12 +12,14 @@ class Zoggy(models.Model):
         return self.hotel
     
     
-class Cuisine(models.Model):
-    hotel= models.CharField(max_length=50)
-    zoggys= models.ManyToManyField(Zoggy) 
+class Cuisine(models.Model):    
+    
+    cuisines = models.CharField(max_length=50)
+    hotels = models.ManyToManyField(Zoggy) 
+    
         
     
     def __str__(self):
-        return self.hotel
+        return self.cuisines
     
     
