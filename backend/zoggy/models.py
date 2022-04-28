@@ -15,7 +15,7 @@ class Zoggy(models.Model):
 class Cuisine(models.Model):    
     
     cuisines = models.CharField(max_length=50)
-    hotels = models.ManyToManyField(Zoggy) 
+    hotels = models.ManyToManyField(Zoggy,related_name='zoggys') 
     
         
     

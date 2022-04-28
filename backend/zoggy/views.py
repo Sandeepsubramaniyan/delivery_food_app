@@ -30,14 +30,11 @@ class Individual(APIView):
                 
 class CuisineView(APIView):
         
-        def get(self,request):
-                filter_cuisine = Cuisine.objects.get(cuisines= 'chinese')
-                print("hotel many to many", filter_cuisine.hotel)
-                # hotel_list = filter_cuisine.values_list('hotel',flat=True)
-                # print(hotel_list)
-                hotels=Zoggy.objects.filter(id__in = [])
-                serializer_class = ZoggySerializer(hotels)
-                return Response(serializer_class.data)
+        def get(self,request,item):
+                cuisine_filter = get_object_or_404(Cuisine,cuisines= item)
+                hotels = cuisine_filter.hotels.all()
+                serializer = ZoggySerializer(hotels, many=True)
+                return Response(serializer.data)
     
     # def post(self,request,id=None):
         
